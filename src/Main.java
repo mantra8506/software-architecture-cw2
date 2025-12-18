@@ -1,14 +1,15 @@
-import data.AppointmentFileHandler;
+import data.FacilityFileHandler;
+import model.Facility;
 import java.util.List;
-import model.Appointment;
 
 public class Main {
+
     public static void main(String[] args) {
 
-        List<Appointment> appointments = AppointmentFileHandler.loadAppointments();
+        List<Facility> facilities = FacilityFileHandler.loadFacilities();
 
-        for (Appointment a : appointments) {
-            System.out.println(a.getStatus());
+        for (Facility f : facilities) {
+            System.out.println(f.getName() + " - Capacity: " + f.getCapacity());
         }
     }
 }
