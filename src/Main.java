@@ -1,15 +1,15 @@
-import data.FacilityFileHandler;
-import model.Facility;
+import data.StaffFileHandler;
+import model.Staff;
 import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        List<Facility> facilities = FacilityFileHandler.loadFacilities();
+        List<Staff> staffList = StaffFileHandler.loadStaff();
 
-        for (Facility f : facilities) {
-            System.out.println(f.getName() + " - Capacity: " + f.getCapacity());
+        for (Staff s : staffList) {
+            System.out.println(s.getName() + " - " + s.getRole());
         }
     }
 }
