@@ -1,0 +1,42 @@
+Referral ID: R001
+Patient ID: P001
+From: GP Surgery A
+To: City Hospital
+Urgency: Urgent
+Summary: Patient requires specialist cardiology assessment.
+--------------------------------------------------
+Referral ID: R002
+Patient ID: P002
+From: GP Surgery B
+To: General Hospital
+Urgency: Routine
+Summary: Referral for dermatology consultation.
+--------------------------------------------------
+Referral ID: R002
+Patient ID: P002
+From: GP Surgery B
+To: General Hospital
+Urgency: Routine
+Summary: Referral for dermatology consultation.
+--------------------------------------------------
+Referral ID: R002
+Patient ID: P002
+From: GP Surgery B
+To: General Hospital
+Urgency: Routine
+Summary: Referral for dermatology consultation.
+--------------------------------------------------
+Referral ID: R100
+Patient ID: P001
+From: GP Surgery A
+To: City Hospital
+Urgency: Urgent
+Summary: GUI generated referral.
+--------------------------------------------------
+Referral ID: R100
+Patient ID: P001
+From: GP Surgery A
+To: City Hospital
+Urgency: Urgent
+Summary: GUI generated referral.
+--------------------------------------------------

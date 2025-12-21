@@ -8,8 +8,11 @@ public class Prescription {
     private String pharmacy;
     private boolean collected;
 
-    public Prescription(String prescriptionId, String medication,
-                        String dosage, String pharmacy, boolean collected) {
+    public Prescription(String prescriptionId,
+                        String medication,
+                        String dosage,
+                        String pharmacy,
+                        boolean collected) {
 
         this.prescriptionId = prescriptionId;
         this.medication = medication;
@@ -20,5 +23,9 @@ public class Prescription {
 
     public String getMedication() {
         return medication;
+    }
+
+    public boolean isCollected() {
+        return collected;
     }
 }
