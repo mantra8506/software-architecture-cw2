@@ -8,10 +8,27 @@ public class ReferralController {
     private ReferralManager referralManager;
 
     public ReferralController() {
-        referralManager = ReferralManager.getInstance();
+        this.referralManager = ReferralManager.getInstance();
     }
 
-    public void createReferral(Referral referral) {
+    // Business logic: create referral
+    public void createReferral(
+            String referralId,
+            String patientId,
+            String clinicianId,
+            String targetService,
+            String clinicalSummary,
+            String urgency
+    ) {
+        Referral referral = new Referral(
+                referralId,
+                patientId,
+                clinicianId,
+                targetService,
+                clinicalSummary,
+                urgency
+        );
+
         referralManager.addReferral(referral);
     }
 }

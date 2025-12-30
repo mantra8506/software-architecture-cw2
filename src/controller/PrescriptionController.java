@@ -1,13 +1,11 @@
 package controller;
 
 import data.PrescriptionFileHandler;
+import java.util.List;
 import model.Prescription;
 
-import java.util.List;
-
 public class PrescriptionController {
-
-    public List<Prescription> getAllPrescriptions() {
+    public static List<Prescription> getAllPrescriptions() {
         return PrescriptionFileHandler.loadPrescriptions();
     }
 }

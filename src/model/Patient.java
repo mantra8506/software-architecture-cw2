@@ -60,6 +60,11 @@ public class Patient {
         return patientId;
     }
 
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+    
+
     public String getName() {
         return name;
     }

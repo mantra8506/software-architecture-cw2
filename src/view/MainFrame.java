@@ -1,76 +1,29 @@
 package view;
 
-import controller.PrescriptionController;
-import controller.ReferralController;
-import model.Prescription;
-import model.Referral;
-
 import javax.swing.*;
-import java.awt.*;
-import java.util.List;
+import controller.ReferralController;
 
 public class MainFrame extends JFrame {
 
-    private JTextArea outputArea;
-    private PrescriptionController prescriptionController;
-    private ReferralController referralController;
+    private ReferralController referralController;   // ✅ MOVE HERE
 
     public MainFrame() {
-
-        prescriptionController = new PrescriptionController();
-        referralController = new ReferralController();
-
         setTitle("Healthcare Management System");
-        setSize(600, 400);
+        setSize(800, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        // Buttons
-        JButton loadPrescriptionsBtn = new JButton("Load Prescriptions");
-        JButton createReferralBtn = new JButton("Create Referral");
+        referralController = new ReferralController(); // ✅ init here
 
-        // Output area
-        outputArea = new JTextArea();
-        outputArea.setEditable(false);
+        JTabbedPane tabs = new JTabbedPane();
 
-        JScrollPane scrollPane = new JScrollPane(outputArea);
+        tabs.add("Patients", new PatientsPanel());
+        tabs.add("Clinicians", new CliniciansPanel());
+        tabs.add("Appointments", new AppointmentsPanel());
+        tabs.add("Prescriptions", new PrescriptionsPanel());
+        tabs.add("Referrals", new ReferralsPanel(referralController)); // ✅ pass controller
 
-        JPanel topPanel = new JPanel();
-        topPanel.add(loadPrescriptionsBtn);
-        topPanel.add(createReferralBtn);
-
-        add(topPanel, BorderLayout.NORTH);
-        add(scrollPane, BorderLayout.CENTER);
-
-        // Button actions
-        loadPrescriptionsBtn.addActionListener(e -> loadPrescriptions());
-        createReferralBtn.addActionListener(e -> createReferral());
-
+        add(tabs);
         setVisible(true);
-    }
-
-    private void loadPrescriptions() {
-        outputArea.setText("");
-        List<Prescription> prescriptions = prescriptionController.getAllPrescriptions();
-
-        for (Prescription p : prescriptions) {
-            outputArea.append(
-                    p.getMedication() + " | Collected: " + p.isCollected() + "\n"
-            );
-        }
-    }
-
-    private void createReferral() {
-        Referral referral = new Referral(
-                "R100",
-                "P001",
-                "GP Surgery A",
-                "City Hospital",
-                "Urgent",
-                "GUI generated referral."
-        );
-
-        referralController.createReferral(referral);
-        outputArea.append("\nReferral created successfully.\n");
     }
 }

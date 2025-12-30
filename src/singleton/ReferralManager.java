@@ -1,11 +1,10 @@
 package singleton;
 
-import model.Referral;
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import model.Referral;
 
 public class ReferralManager {
 
@@ -32,7 +31,7 @@ public class ReferralManager {
     public void addReferral(Referral referral) {
         referrals.add(referral);
         writeReferralToFile(referral);
-    }
+    }    
 
     // Return all referrals
     public List<Referral> getReferrals() {

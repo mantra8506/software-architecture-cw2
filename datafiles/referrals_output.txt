@@ -40,3 +40,52 @@ To: City Hospital
 Urgency: Urgent
 Summary: GUI generated referral.
 --------------------------------------------------
+Referral ID: R100
+Patient ID: P001
+From: GP Surgery A
+To: City Hospital
+Urgency: Urgent
+Summary: GUI generated referral.
+--------------------------------------------------
+Referral ID: R100
+Patient ID: P001
+From: GP Surgery A
+To: City Hospital
+Urgency: Urgent
+Summary: GUI generated referral.
+--------------------------------------------------
+Referral ID: R100
+Patient ID: P001
+From: GP Surgery A
+To: City Hospital
+Urgency: Urgent
+Summary: GUI generated referral.
+--------------------------------------------------
+Referral ID: R100
+Patient ID: P001
+From: GP Surgery A
+To: City Hospital
+Urgency: Urgent
+Summary: GUI generated referral.
+--------------------------------------------------
+Referral ID: R001
+Patient ID: P001
+From: C001
+To: Cardiology
+Urgency: Chest pain – urgent referral
+Summary: HIGH
+--------------------------------------------------
+Referral ID: R001
+Patient ID: P001
+From: C001
+To: Cardiology
+Urgency: Chest pain – urgent referral
+Summary: HIGH
+--------------------------------------------------
+Referral ID: R001
+Patient ID: P001
+From: C001
+To: Cardiology
+Urgency: Chest pain – urgent referral
+Summary: HIGH
+--------------------------------------------------
