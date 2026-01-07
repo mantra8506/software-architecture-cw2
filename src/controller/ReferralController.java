@@ -1,34 +1,22 @@
 package controller;
 
+import java.util.List;
 import model.Referral;
 import singleton.ReferralManager;
 
 public class ReferralController {
 
-    private ReferralManager referralManager;
+    private ReferralManager manager = ReferralManager.getInstance();
 
-    public ReferralController() {
-        this.referralManager = ReferralManager.getInstance();
+    public boolean createReferral(Referral referral) {
+        return manager.createReferral(referral);
     }
 
-    // Business logic: create referral
-    public void createReferral(
-            String referralId,
-            String patientId,
-            String clinicianId,
-            String targetService,
-            String clinicalSummary,
-            String urgency
-    ) {
-        Referral referral = new Referral(
-                referralId,
-                patientId,
-                clinicianId,
-                targetService,
-                clinicalSummary,
-                urgency
-        );
+    public void completeReferral() {
+        manager.completeReferral();
+    }
 
-        referralManager.addReferral(referral);
+    public List<Referral> getReferrals() {
+        return manager.getAllReferrals();
     }
 }

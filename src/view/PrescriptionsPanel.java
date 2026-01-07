@@ -22,16 +22,22 @@ public class PrescriptionsPanel extends JPanel {
 
         JButton loadBtn = new JButton("Load");
         JButton addBtn = new JButton("Add");
+        JButton editBtn = new JButton("Edit");
         JButton deleteBtn = new JButton("Delete");
+
 
         JPanel buttons = new JPanel();
         buttons.add(loadBtn);
         buttons.add(addBtn);
+        buttons.add(editBtn);
         buttons.add(deleteBtn);
+
 
         loadBtn.addActionListener(e -> loadPrescriptions());
         addBtn.addActionListener(e -> addPrescription());
         deleteBtn.addActionListener(e -> deletePrescription());
+        editBtn.addActionListener(e -> editPrescription());
+
 
         add(buttons, BorderLayout.NORTH);
         add(new JScrollPane(table), BorderLayout.CENTER);
@@ -71,4 +77,37 @@ public class PrescriptionsPanel extends JPanel {
         PrescriptionController.deletePrescription(row);
         loadPrescriptions();
     }
+
+    private void editPrescription() {
+        int row = table.getSelectedRow();
+    
+        if (row == -1) {
+            JOptionPane.showMessageDialog(this, "Select a prescription first");
+            return;
+        }
+    
+        String id = (String) model.getValueAt(row, 0);
+        String currentMed = (String) model.getValueAt(row, 1);
+        String currentDose = (String) model.getValueAt(row, 2);
+        boolean collected = (boolean) model.getValueAt(row, 3);
+    
+        String newMed = JOptionPane.showInputDialog(
+                this, "Medication:", currentMed);
+        String newDose = JOptionPane.showInputDialog(
+                this, "Dosage:", currentDose);
+    
+        int collectedChoice = JOptionPane.showConfirmDialog(
+                this, "Collected?", "Status",
+                JOptionPane.YES_NO_OPTION);
+    
+        boolean newCollected = collectedChoice == JOptionPane.YES_OPTION;
+    
+        Prescription updated = new Prescription(
+                id, newMed, newDose, "Manual Entry", newCollected
+        );
+    
+        PrescriptionController.updatePrescription(row, updated);
+        loadPrescriptions();
+    }
+    
 }

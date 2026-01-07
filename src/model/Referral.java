@@ -8,10 +8,15 @@ public class Referral {
     private String toFacility;
     private String urgency;
     private String clinicalSummary;
+    private String status; // ACTIVE / COMPLETED
 
-    public Referral(String referralId, String patientId,
-                    String fromFacility, String toFacility,
-                    String urgency, String clinicalSummary) {
+    public Referral(String referralId,
+                    String patientId,
+                    String fromFacility,
+                    String toFacility,
+                    String urgency,
+                    String clinicalSummary,
+                    String status) {
 
         this.referralId = referralId;
         this.patientId = patientId;
@@ -19,15 +24,18 @@ public class Referral {
         this.toFacility = toFacility;
         this.urgency = urgency;
         this.clinicalSummary = clinicalSummary;
+        this.status = status;
     }
 
-    @Override
-    public String toString() {
-        return "Referral ID: " + referralId + "\n" +
-               "Patient ID: " + patientId + "\n" +
-               "From: " + fromFacility + "\n" +
-               "To: " + toFacility + "\n" +
-               "Urgency: " + urgency + "\n" +
-               "Summary: " + clinicalSummary;
+    public String getReferralId() { return referralId; }
+    public String getPatientId() { return patientId; }
+    public String getFromFacility() { return fromFacility; }
+    public String getToFacility() { return toFacility; }
+    public String getUrgency() { return urgency; }
+    public String getClinicalSummary() { return clinicalSummary; }
+    public String getStatus() { return status; }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

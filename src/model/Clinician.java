@@ -14,11 +14,20 @@ public class Clinician {
         this.workplace = workplace;
     }
 
+    // ✅ REQUIRED GETTERS (MVC + GUI)
+    public String getClinicianId() {
+        return clinicianId;
+    }
+
     public String getName() {
         return name;
     }
 
     public String getSpecialty() {
         return specialty;
+    }
+
+    public String getFacility() {
+        return workplace;
     }
 }

@@ -1,25 +1,21 @@
 package singleton;
 
 import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import model.Referral;
 
 public class ReferralManager {
 
-    // SINGLE INSTANCE (Singleton)
     private static ReferralManager instance;
 
-    // Internal referral list (acts as referral queue)
-    private List<Referral> referrals;
+    private Referral activeReferral; // ONLY ONE
+    private List<Referral> allReferrals = new ArrayList<>();
 
-    // PRIVATE constructor (prevents external creation)
-    private ReferralManager() {
-        referrals = new ArrayList<>();
-    }
+    private static final String OUTPUT_FILE = "datafiles/created_referrals.csv";
 
-    // Global access point
+    private ReferralManager() {}
+
     public static ReferralManager getInstance() {
         if (instance == null) {
             instance = new ReferralManager();
@@ -27,25 +23,43 @@ public class ReferralManager {
         return instance;
     }
 
-    // Add referral to system
-    public void addReferral(Referral referral) {
-        referrals.add(referral);
-        writeReferralToFile(referral);
-    }    
+    // CREATE (Singleton rule enforced)
+    public boolean createReferral(Referral referral) {
 
-    // Return all referrals
-    public List<Referral> getReferrals() {
-        return referrals;
+        if (activeReferral != null) {
+            return false; // ❌ block duplicate
+        }
+
+        activeReferral = referral;
+        allReferrals.add(referral);
+        saveToCSV(referral);
+        return true;
     }
 
-    // Simulated email / audit log
-    private void writeReferralToFile(Referral referral) {
-        try (FileWriter writer = new FileWriter("datafiles/referrals_output.txt", true)) {
-            writer.write(referral.toString());
-            writer.write(System.lineSeparator());
-            writer.write("--------------------------------------------------");
-            writer.write(System.lineSeparator());
-        } catch (IOException e) {
+    // COMPLETE
+    public void completeReferral() {
+        if (activeReferral != null) {
+            activeReferral.setStatus("COMPLETED");
+            activeReferral = null;
+        }
+    }
+
+    public List<Referral> getAllReferrals() {
+        return allReferrals;
+    }
+
+    private void saveToCSV(Referral r) {
+        try (FileWriter fw = new FileWriter(OUTPUT_FILE, true)) {
+            fw.write(
+                r.getReferralId() + "," +
+                r.getPatientId() + "," +
+                r.getFromFacility() + "," +
+                r.getToFacility() + "," +
+                r.getUrgency() + "," +
+                r.getClinicalSummary().replace(",", " ") + "," +
+                r.getStatus() + "\n"
+            );
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

@@ -11,26 +11,38 @@ public class AppointmentFileHandler {
     private static final String FILE_PATH = "datafiles/appointments.csv";
 
     public static List<Appointment> loadAppointments() {
+
         List<Appointment> appointments = new ArrayList<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH))) {
+
             String line;
-            br.readLine(); // skip header
+            br.readLine(); // skip CSV header
 
             while ((line = br.readLine()) != null) {
+
                 String[] values = line.split(",");
 
+                // ✅ Map CSV columns correctly
                 String appointmentId = values[0];
-                String date = values[1];
-                String reason = values[2];
-                String status = values[3];
+                String patientId = values[1];
+                String clinicianId = values[2];
+                String date = values[3];
+                String status = values[4];
+                String reason = values[5];
 
                 Appointment appointment = new Appointment(
-                        appointmentId, date, reason, status
+                        appointmentId,
+                        patientId,
+                        clinicianId,
+                        date,
+                        status,
+                        reason
                 );
 
                 appointments.add(appointment);
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }

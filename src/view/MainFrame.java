@@ -1,7 +1,7 @@
 package view;
 
-import javax.swing.*;
 import controller.ReferralController;
+import javax.swing.*;
 
 public class MainFrame extends JFrame {
 
@@ -13,7 +13,8 @@ public class MainFrame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        referralController = new ReferralController(); // ✅ init here
+        ReferralController referralController = new ReferralController();
+
 
         JTabbedPane tabs = new JTabbedPane();
 
@@ -21,7 +22,8 @@ public class MainFrame extends JFrame {
         tabs.add("Clinicians", new CliniciansPanel());
         tabs.add("Appointments", new AppointmentsPanel());
         tabs.add("Prescriptions", new PrescriptionsPanel());
-        tabs.add("Referrals", new ReferralsPanel(referralController)); // ✅ pass controller
+        tabs.add("Referrals", new ReferralsPanel(referralController));
+        
 
         add(tabs);
         setVisible(true);

@@ -24,4 +24,12 @@ public class PrescriptionController {
             prescriptions.remove(index);
         }
     }
+
+    // EDIT
+    public static void updatePrescription(int index, Prescription updated) {
+        if (index >= 0 && index < prescriptions.size()) {
+            prescriptions.set(index, updated);
+        }
+    }
+
 }
